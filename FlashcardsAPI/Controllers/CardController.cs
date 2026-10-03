@@ -15,6 +15,30 @@ namespace FlashcardsAPI.Controllers
             _context = context;
         }
 
+
+        [HttpPost]
+        public async Task<ActionResult<Card>> CreateCard(Card newCard)
+        {
+            
+            if (newCard == null)
+            {
+                return BadRequest();
+            }
+            _context.Add(newCard);
+
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
+
+        [HttpPut]
+        public async Task<ActionResult<Card>> UpdateCard(int id)
+        {
+
+
+            return Ok();
+        }
+
         [HttpGet]
         public async Task<ActionResult<Card>> GetCard(int id)
         {
